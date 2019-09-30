@@ -35,11 +35,17 @@ Route::get('/dashboard', function(){
     });
     
     Route::get('/{username}', function ($username) {
-        return view('theme_user.template_profile');
+        return view('theme_user.template_profile', compact('username'));
     });
     
     Route::get('/{id}/edit', function ($id) {
-        return view('theme_user.template_edit');
+        $page_title = 'Edit User';
+        // return view('theme_user.template_edit');
+        // return view('theme_user.template_edit', ['id' => $id]);
+        // return view('theme_user.template_edit')->with('id', $id);
+        return view('theme_user.template_edit', 
+        compact('page_title','id'));
+
     })->where(['id' => '[0-9]+']);
     
     Route::patch('/', function () {

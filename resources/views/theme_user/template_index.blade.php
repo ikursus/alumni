@@ -24,16 +24,18 @@
             </tr>
         </thead>
         <tbody>
+        @foreach ($senaraiUsers as $user)
             <tr>
-                <td>1</td>
-                <td>ALI</td>
-                <td>ali@gmail.com</td>
-                <td>012345689</td>
+                <td>{{ $user['id'] }}</td>
+                <td>{{ $user['name'] }}</td>
+                <td>{{ $user['email'] }}</td>
+                <td>{{ $user['phone'] }}</td>
                 <td>
-                    <a href="/users/1">VIEW</a>
-                    <a href="/users/1/edit">EDIT</a>                    
+                    <a href="/users/{{ $user['id'] }}">VIEW</a>
+                    <a href="/users/{{ $user['id'] }}/edit">EDIT</a>                    
                 </td>
             </tr>
+        @endforeach
         </tbody>
     </table>
 

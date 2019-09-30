@@ -10,7 +10,7 @@
     <h1>Edit User</h1>
 
     <div>
-        Kod Borang Di Sini <?php echo $id; ?>
+        Kod Borang Di Sini {{ $id }}
     </div>
 
     <a href="/users">Kembali ke Senarai Users</a>

@@ -26,8 +26,14 @@ class UserController extends Controller
 
     public function save(Request $request)
     {
+        $request->validate([
+            'title' => 'required|min:2',
+            'email' => 'required|email'
+        ]);
+
         //$data = $request->input('name');
         $data = $request->all();
+        // $data = $request->only('name');
 
         return $data;
     }

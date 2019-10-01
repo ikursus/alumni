@@ -25,6 +25,7 @@
         </thead>
         <tbody>
         @foreach ($senaraiUsers as $user)
+        
             <tr>
                 <td>{{ $user['id'] }}</td>
                 <td>{{ $user['name'] }}</td>
@@ -35,6 +36,7 @@
                     <a href="/users/{{ $user['id'] }}/edit">EDIT</a>                    
                 </td>
             </tr>
+                   
         @endforeach
         </tbody>
     </table>

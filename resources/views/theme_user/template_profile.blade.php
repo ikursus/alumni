@@ -1,17 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profile Pengguna</title>
-</head>
-<body>
-    <h1>Profile Pengguna</h1>
+@extends('layouts.app')
 
-    <p>Ini adalah profile: <?php echo $username; ?>.</p>
+@section('kotak_biru')
+<div class="container">
+<div class="row justify-content-center">
+<div class="col-md-8">        
 
-    <a href="/users">Kembali ke Senarai Users</a>
+<div class="card">
+<div class="card-header">{{ __('Profile User') }}</div>
 
-</body>
-</html>
+<div class="card-body">
+
+Ini adalah contoh halaman profile user.
+
+</div>
+<div class="card-footer">
+<a href="/users" class="btn btn-secondary">Back</a>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+@endsection

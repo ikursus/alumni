@@ -14,12 +14,15 @@
     @csrf
 
     <div class="form-group row">
-        <label for="title" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
+        <label for="title_id" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 
         <div class="col-md-6">
-            <input id="title" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ old('title') }}"  autocomplete="title" autofocus>
+            <select id="title_id" class="form-control @error('title_id') is-invalid @enderror" name="title_id">
+                <option value="1">Encik</option>
+                <option value="2">Cik</option>
+            </select>
 
-            @error('title')
+            @error('title_id')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -106,12 +109,17 @@
     </div>
 
     <div class="form-group row">
-        <label for="race" class="col-md-4 col-form-label text-md-right">{{ __('Race') }}</label>
+        <label for="race_id" class="col-md-4 col-form-label text-md-right">{{ __('Race') }}</label>
 
         <div class="col-md-6">
-            <input id="race" type="text" class="form-control @error('race') is-invalid @enderror" name="race" value="{{ old('race') }}"  autocomplete="race" autofocus>
+            
+            <select id="race_id" class="form-control @error('race_id') is-invalid @enderror" name="race_id">
+            @foreach( $senaraiRace as $item )
+                <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @endforeach
+            </select>
 
-            @error('race')
+            @error('race_id')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
@@ -123,7 +131,12 @@
         <label for="religion" class="col-md-4 col-form-label text-md-right">{{ __('Religion') }}</label>
 
         <div class="col-md-6">
-            <input id="religion" type="text" class="form-control @error('religion') is-invalid @enderror" name="religion" value="{{ old('religion') }}"  autocomplete="religion" autofocus>
+            
+        <select id="religion_id" class="form-control @error('religion_id') is-invalid @enderror" name="religion_id">
+            @foreach( $senaraiReligion as $item )
+                <option value="{{ $item->id }}">{{ $item->name }}</option>
+            @endforeach
+        </select>
 
             @error('religion')
                 <span class="invalid-feedback" role="alert">
@@ -134,10 +147,13 @@
     </div>
 
     <div class="form-group row">
-        <label for="nationality" class="col-md-4 col-form-label text-md-right">{{ __('Nationality') }}</label>
+        <label for="nationality_id" class="col-md-4 col-form-label text-md-right">{{ __('Nationality') }}</label>
 
         <div class="col-md-6">
-            <input id="nationality" type="text" class="form-control @error('nationality') is-invalid @enderror" name="nationality" value="{{ old('nationality') }}"  autocomplete="nationality" autofocus>
+            <select id="nationality_id" class="form-control @error('nationality_id') is-invalid @enderror" name="nationality_id">
+                <option value="1">Malaysian</option>
+                <option value="2">Lain - Lain</option>
+            </select>
 
             @error('nationality')
                 <span class="invalid-feedback" role="alert">

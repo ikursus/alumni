@@ -25,7 +25,7 @@ Route::get('/dashboard', function(){
     Route::get('/', 'UserController@index');
     Route::get('/add', 'UserController@add');
     Route::post('/add', 'UserController@save');
-    Route::get('/{username}', 'UserController@profile');
+    Route::get('/{id}', 'UserController@profile');
     Route::get('/{id}/edit', 'UserController@edit')->where(['id' => '[0-9]+']);
     Route::patch('/', 'UserController@update');
     Route::delete('/', 'UserController@destroy');

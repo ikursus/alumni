@@ -10,8 +10,13 @@
 
 <div class="card-body">
 
-Ini adalah contoh halaman profile user.
+<p>Profile {{ $user->name }}</p>
 
+<ul>
+    <li>Email: {{ $user->email }}</li>
+    <li>Phone: {{ $user->phone }}</li>    
+    <li>NRIC: {{ $user->nric }}</li>
+</ul>
 </div>
 <div class="card-footer">
 <a href="/users" class="btn btn-secondary">Back</a>

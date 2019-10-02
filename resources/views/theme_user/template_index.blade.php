@@ -29,13 +29,13 @@
     @foreach ($senaraiUsers as $user)
 
         <tr>
-            <td>{{ $user['id'] }}</td>
-            <td>{{ $user['name'] }}</td>
-            <td>{{ $user['email'] }}</td>
-            <td>{{ $user['phone'] }}</td>
+            <td>{{ $user->id }}</td>
+            <td>{{ $user->name }}</td>
+            <td>{{ $user->email }}</td>
+            <td>{{ $user->phone }}</td>
             <td>
-            <a href="/users/{{ $user['id'] }}" class="btn btn-primary btn-sm">VIEW</a>
-            <a href="/users/{{ $user['id'] }}/edit" class="btn btn-warning btn-sm">EDIT</a>
+            <a href="/users/{{ $user->id }}" class="btn btn-primary btn-sm">VIEW</a>
+            <a href="/users/{{ $user->id }}/edit" class="btn btn-warning btn-sm">EDIT</a>
             <button type="button" class="btn btn-danger btn-sm">DELETE</button>
             </td>
         </tr>

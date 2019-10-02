@@ -98,7 +98,7 @@
         <label for="address" class="col-md-4 col-form-label text-md-right">{{ __('Address') }}</label>
 
         <div class="col-md-6">
-            <textarea id="address" type="text" class="form-control @error('address') is-invalid @enderror" name="address" value="{{ old('address') }}"  autocomplete="address" autofocus></textarea>
+            <textarea id="address" class="form-control @error('address') is-invalid @enderror" name="address"></textarea>
 
             @error('address')
                 <span class="invalid-feedback" role="alert">
@@ -156,6 +156,24 @@
             </select>
 
             @error('nationality')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="gender" class="col-md-4 col-form-label text-md-right">{{ __('Gender') }}</label>
+
+        <div class="col-md-6">
+            <select id="gender" class="form-control @error('gender') is-invalid @enderror" name="gender">
+                <option value="lelaki">Lelaki</option>
+                <option value="perempuan">Perempuan</option>
+                <option value="lain">Lain - Lain</option>
+            </select>
+
+            @error('gender')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

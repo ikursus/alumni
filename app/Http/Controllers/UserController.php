@@ -65,7 +65,7 @@ class UserController extends Controller
     {
         // Validate data dari borang
         $request->validate([
-            'title' => 'required|min:2',
+            'name' => 'required',
             'email' => 'required|email'
         ]);
 

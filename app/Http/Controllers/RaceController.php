@@ -53,9 +53,9 @@ public function store(Request $request)
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Race $race)
     {
-        //
+        return view('theme_races.show', compact('race'));
     }
 
     /**

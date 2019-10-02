@@ -182,16 +182,16 @@
     </div>
 
     <div class="form-group row">
-        <label for="status" class="col-md-4 col-form-label text-md-right">{{ __('Status Perkahwinan') }}</label>
+        <label for="status_perkahwinan" class="col-md-4 col-form-label text-md-right">{{ __('status_perkahwinan Perkahwinan') }}</label>
 
         <div class="col-md-6">
-            <select id="status" class="form-control @error('status') is-invalid @enderror" name="status">
+            <select id="status_perkahwinan" class="form-control @error('status_perkahwinan') is-invalid @enderror" name="status_perkahwinan">
                 <option value="berkahwin">Berkahwin</option>
                 <option value="bujang">Bujang</option>
                 <option value="lain">Lain - Lain</option>
             </select>
 
-            @error('status')
+            @error('status_perkahwinan')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>

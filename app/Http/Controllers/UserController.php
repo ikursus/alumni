@@ -34,7 +34,8 @@ class UserController extends Controller
         // ->get();
         ->paginate(2);
 
-
+        // dd($senaraiUsers);
+        
         return view('theme_user.template_index', compact('senaraiUsers'));
     }
 
@@ -167,12 +168,14 @@ class UserController extends Controller
             'status_perkahwinan',
             'role'
         ]);
-            
+
         // Encrypt password jika ruangan password diisi
         if (!empty($request->input('password')))
         {
             $data['password'] = bcrypt($request->input('password'));
         }
+
+        // dd($data);
 
         // Berhubung dengan DB dan kemaskini data berdasarkan ID
         DB::table('users')

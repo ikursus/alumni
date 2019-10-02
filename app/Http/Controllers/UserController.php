@@ -66,7 +66,8 @@ class UserController extends Controller
         // Validate data dari borang
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'password' => 'required|min:3|confirmed'
         ]);
 
         // $data = $request->input('name');
@@ -76,7 +77,6 @@ class UserController extends Controller
             'name',
             'nric',
             'email',
-            'password',
             'gender',
             'dob',
             'phone',
@@ -88,6 +88,10 @@ class UserController extends Controller
             'status_perkahwinan',
             'role'
         ]);
+            
+        // Encrypt password
+        $data['password'] = bcrypt($request->input('password'));
+
 
         // Berhubung dengan DB dan masukkan data
         DB::table('users')->insert($data);
@@ -109,12 +113,30 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $page_title = 'Edit User';
-        // return view('theme_user.template_edit');
-        // return view('theme_user.template_edit', ['id' => $id]);
-        // return view('theme_user.template_edit')->with('id', $id);
+        $senaraiRace = DB::table('race')
+        ->select([
+            'id',
+            'name'
+        ])
+        ->get();
+
+        $senaraiReligion = DB::table('religions')
+        ->select([
+            'id',
+            'name'
+        ])
+        ->get();
+
+        $user = DB::table('users')
+        ->where('id', '=', $id)
+        ->first();
+
         return view('theme_user.template_edit', 
-        compact('page_title','id'));
+        compact(
+            'user',
+            'senaraiRace', 
+            'senaraiReligion'
+        ));
 
     }
 

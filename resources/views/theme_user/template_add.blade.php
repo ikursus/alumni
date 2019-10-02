@@ -10,6 +10,8 @@
 
 <div class="card-body">
 
+@include('layouts.alerts')
+
 <form method="POST" action="">
     @csrf
 

@@ -140,9 +140,46 @@ class UserController extends Controller
 
     }
 
-    public function update()
+    public function update(Request $request, $id)
     {
-        return 'Kemaskini data telah berjaya diterima';
+
+        // Validate data dari borang
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:3|confirmed'
+        ]);
+
+        // $data = $request->input('name');
+        // $data = $request->all();
+        $data = $request->only([
+            'title_id',
+            'name',
+            'nric',
+            'email',
+            'gender',
+            'dob',
+            'phone',
+            'address',
+            'race_id',
+            'religion_id',
+            'nationality_id',
+            'gambar',
+            'status_perkahwinan',
+            'role'
+        ]);
+            
+        // Encrypt password
+        $data['password'] = bcrypt($request->input('password'));
+
+
+        // Berhubung dengan DB dan kemaskini data berdasarkan ID
+        DB::table('users')
+        ->where('id', '=', $id)
+        ->update($data);
+
+        // Redirect ke senarai user
+        return redirect('/users');
     }
 
 

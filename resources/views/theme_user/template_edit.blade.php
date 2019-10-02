@@ -14,7 +14,9 @@
 
 <form method="POST" action="">
     @csrf
-
+    <!-- <input type="hidden" name="_method" value="PATCH"> -->
+    @method('PATCH')
+    
     <div class="form-group row">
         <label for="title_id" class="col-md-4 col-form-label text-md-right">{{ __('Title') }}</label>
 

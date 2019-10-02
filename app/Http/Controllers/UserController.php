@@ -35,7 +35,7 @@ class UserController extends Controller
         ->paginate(2);
 
         // dd($senaraiUsers);
-        
+
         return view('theme_user.template_index', compact('senaraiUsers'));
     }
 
@@ -184,6 +184,14 @@ class UserController extends Controller
 
         // Redirect ke senarai user
         return redirect('/users')->with('sukses_mesej', 'Berjaya kemaskini!');
+    }
+
+
+    public function destroy($id)
+    {
+        DB::table('users')->where('id', $id)->delete();
+
+        return redirect('/users')->with('sukses_mesej', 'Rekod dihapuskan!');
     }
 
 

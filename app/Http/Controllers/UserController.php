@@ -146,8 +146,7 @@ class UserController extends Controller
         // Validate data dari borang
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:3|confirmed'
+            'email' => 'required|email'
         ]);
 
         // $data = $request->input('name');
@@ -169,9 +168,11 @@ class UserController extends Controller
             'role'
         ]);
             
-        // Encrypt password
-        $data['password'] = bcrypt($request->input('password'));
-
+        // Encrypt password jika ruangan password diisi
+        if (!empty($request->input('password')))
+        {
+            $data['password'] = bcrypt($request->input('password'));
+        }
 
         // Berhubung dengan DB dan kemaskini data berdasarkan ID
         DB::table('users')
@@ -179,7 +180,7 @@ class UserController extends Controller
         ->update($data);
 
         // Redirect ke senarai user
-        return redirect('/users');
+        return redirect('/users')->with('sukses_mesej', 'Berjaya kemaskini!');
     }
 
 

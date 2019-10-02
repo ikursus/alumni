@@ -14,7 +14,7 @@
 <div class="card-header">{{ __('Senarai Users') }}</div>
 
 <div class="card-body">
-
+@include('layouts.alerts')
 <table class="table">
     <thead>
         <tr>

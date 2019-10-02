@@ -32,6 +32,6 @@ Route::get('/dashboard', function(){
 
  });
 
- Route::resource('academics', 'AkademikController');
+ Route::resource('religions', 'ReligionController');
  //->only(['index', 'create', 'store']);
  //->except(['index', 'create', 'store']);

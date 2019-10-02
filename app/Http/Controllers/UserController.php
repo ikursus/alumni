@@ -23,15 +23,16 @@ class UserController extends Controller
         // ->where('phone', '0123456789')
         // ->get();
         $senaraiUsers = DB::table('users')
+        ->join('race', 'race.id', '=', 'users.race_id')
+        ->join('religions', 'religions.id', '=', 'users.religion_id')
         ->select([
-            'id',
-            'name',
-            'email',
-            'phone'
+            'users.id',
+            'users.name',
+            'users.email',
+            'users.phone',
+            'race.name as race_name',
+            'religions.name as religion_name'
         ])
-        ->orderBy('id', 'desc')
-        // ->latest()
-        // ->get();
         ->paginate(2);
 
         // dd($senaraiUsers);

@@ -35,3 +35,4 @@ Route::get('/dashboard', function(){
  Route::resource('religions', 'ReligionController');
  //->only(['index', 'create', 'store']);
  //->except(['index', 'create', 'store']);
+ Route::resource('races', 'RaceController');

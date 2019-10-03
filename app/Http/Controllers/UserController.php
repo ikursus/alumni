@@ -168,7 +168,11 @@ class UserController extends Controller
 
         // $data = $request->input('name');
         // $data = $request->all();
-        $data = $request->except(['password', 'gambar']);
+        $data = $request->except([
+                'password', 
+                'gambar',
+                'checkbox'
+            ]);
 
         // Encrypt password jika ruangan password diisi
         if (!empty($request->input('password')))
@@ -184,10 +188,15 @@ class UserController extends Controller
             $file = $gambar->store('images', 'public');
 
             // Attach array nama gambar ke $data
-            $data['gambar'] = $file;           
-
+            $data['gambar'] = $file;
         }
-        // dd($data);
+        
+        // Encrypt password jika ruangan password diisi
+        if ($request->has('checkbox'))
+        {
+            $checkbox = $request->input('checkbox');
+            $data['checkbox'] = json_encode($checkbox);
+        }
 
         // Berhubung dengan DB dan kemaskini data berdasarkan ID
         $user = User::findOrFail($id);

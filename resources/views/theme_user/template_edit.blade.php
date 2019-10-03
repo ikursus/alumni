@@ -241,6 +241,16 @@
         </div>
     </div>
 
+    <div class="form-group row">
+        <label for="gambar" class="col-md-4 col-form-label text-md-right">{{ __('Checkbox') }}</label>
+
+        <div class="col-md-6">
+            <input type="checkbox" name="checkbox[]" value="check 1" {{ (is_null($user->checkbox) ? null : in_array('check 1', json_decode($user->checkbox))) ? 'checked="checked"' : null }}> Check 1
+            <input type="checkbox" name="checkbox[]" value="check 2" {{ (is_null($user->checkbox) ? null : in_array('check 2', json_decode($user->checkbox))) ? 'checked="checked"' : null }}> Check 2
+            <input type="checkbox" name="checkbox[]" value="check 3" {{ (is_null($user->checkbox) ? null : in_array('check 3', json_decode($user->checkbox))) ? 'checked="checked"' : null }}> Check 3
+        </div>
+    </div>
+
 
     <div class="form-group row mb-0">
         <div class="col-md-6 offset-md-4">

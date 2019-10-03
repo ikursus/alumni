@@ -28,6 +28,7 @@ class User extends Authenticatable
         'religion_id',
         'nationality_id',
         'gambar',
+        'checkbox',
         'status_perkahwinan',
         'role'
     ];

@@ -22,6 +22,7 @@
 </div>
 <div class="card-footer">
 <a href="/users" class="btn btn-secondary">Back</a>
+<a href="{{ route('print.users', $user->id) }}" class="btn btn-primary">Download PDF</a>
 </div>
 
 </div>

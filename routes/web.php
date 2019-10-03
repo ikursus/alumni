@@ -39,3 +39,6 @@ Route::get('/dashboard', function(){
  // Route titles untuk terima ajax request dari page themes_title/index.blade.php
  Route::get('titles/datatables', 'TitleController@datatables')->name('titles.datatables');
  Route::resource('titles', 'TitleController');
+
+ Route::get('print/users/{id}', 'PrintController@user')
+ ->name('print.users');

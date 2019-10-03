@@ -41,7 +41,8 @@ $(function() {
         ajax: '{!! route('titles.datatables') !!}',
         columns: [
             { data: 'id', name: 'id' },
-            { data: 'name', name: 'name' }
+            { data: 'name', name: 'name' },
+            { data: 'actions', name: 'actions', orderable: false, searchable: false },
         ]
     });
 });

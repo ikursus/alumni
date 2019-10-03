@@ -27,6 +27,10 @@ class TitleController extends Controller
         ]);
 
         return DataTables::of($query)
+        ->addColumn('actions', function($item) {
+            return view('theme_titles.actions', compact('item'));
+        })
+        ->rawColumns(['actions'])
         ->make(true);
     }
 

@@ -17,4 +17,15 @@ class Race extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    /**
+     * Get the user's name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getNameAttribute($value)
+    {
+        return strtoupper($value);
+    }
 }

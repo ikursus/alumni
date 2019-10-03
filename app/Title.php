@@ -15,4 +15,15 @@ class Title extends Model
     {
         return $this->hasMany(User::class);
     }
+
+    /**
+     * Set the user's name.
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = strtoupper($value);
+    }
 }

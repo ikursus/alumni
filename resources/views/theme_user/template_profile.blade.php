@@ -10,6 +10,8 @@
 
 <div class="card-body">
 
+<img src="{{ asset('storage/' . $user->gambar) }}" style="max-width: 200px">
+
 <p>Profile {{ $user->name }}</p>
 
 <ul>

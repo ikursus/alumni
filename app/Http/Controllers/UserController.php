@@ -162,27 +162,13 @@ class UserController extends Controller
         // Validate data dari borang
         $request->validate([
             'name' => 'required',
-            'email' => 'required|email'
+            'email' => 'required|email',
+            'gambar' => 'mimes:jpeg,bmp,png'
         ]);
 
         // $data = $request->input('name');
         // $data = $request->all();
-        $data = $request->only([
-            'title_id',
-            'name',
-            'nric',
-            'email',
-            'gender',
-            'dob',
-            'phone',
-            'address',
-            'race_id',
-            'religion_id',
-            'nationality_id',
-            'gambar',
-            'status_perkahwinan',
-            'role'
-        ]);
+        $data = $request->except(['password', 'gambar']);
 
         // Encrypt password jika ruangan password diisi
         if (!empty($request->input('password')))
@@ -190,12 +176,22 @@ class UserController extends Controller
             $data['password'] = bcrypt($request->input('password'));
         }
 
+        // Semak jika ada gambar
+        if ($request->hasFile('gambar'))
+        {
+            /// Dapatkan file gambar
+            $gambar = $request->file('gambar');
+            $file = $gambar->store('images', 'public');
+
+            // Attach array nama gambar ke $data
+            $data['gambar'] = $file;           
+
+        }
         // dd($data);
 
         // Berhubung dengan DB dan kemaskini data berdasarkan ID
-        DB::table('users')
-        ->where('id', '=', $id)
-        ->update($data);
+        $user = User::findOrFail($id);
+        $user->update($data);
 
         // Redirect ke senarai user
         return redirect('/users')->with('sukses_mesej', 'Berjaya kemaskini!');

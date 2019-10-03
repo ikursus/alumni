@@ -12,7 +12,7 @@
 
 @include('layouts.alerts')
 
-<form method="POST" action="">
+<form method="POST" action="{{ route('users.update', $user->id) }}" enctype="multipart/form-data">
     @csrf
     <!-- <input type="hidden" name="_method" value="PATCH"> -->
     @method('PATCH')
@@ -226,6 +226,21 @@
             @enderror
         </div>
     </div>
+
+    <div class="form-group row">
+        <label for="gambar" class="col-md-4 col-form-label text-md-right">{{ __('Gambar') }}</label>
+
+        <div class="col-md-6">
+            <input type="file" name="gambar">
+
+            @error('gambar')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+    </div>
+
 
     <div class="form-group row mb-0">
         <div class="col-md-6 offset-md-4">

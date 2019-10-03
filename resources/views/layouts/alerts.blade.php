@@ -11,7 +11,7 @@
 @if (session('sukses_mesej'))
 <div class="alert alert-success">
     <ul>
-       {{ session('sukses_mesej') }}
+       <li>{{ session('sukses_mesej') }}</li>
     </ul>
 </div>
 @endif

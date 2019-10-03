@@ -22,8 +22,9 @@
 
         <div class="col-md-6">
             <select id="title_id" class="form-control @error('title_id') is-invalid @enderror" name="title_id">
-                <option value="1"{{ $user->title_id == 1 ? ' selected="selected"' : null }}>Encik</option>
-                <option value="2"{{ $user->title_id == 2 ? ' selected="selected"' : null }}>Cik</option>
+                @foreach( $senaraiTitle as $title )
+                <option value="{{ $title->id }}"{{ $user->title_id == $title->id ? ' selected="selected"' : null }}>{{ $title->name }}</option>
+                @endforeach
             </select>
 
             @error('title_id')

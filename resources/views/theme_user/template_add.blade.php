@@ -20,8 +20,9 @@
 
         <div class="col-md-6">
             <select id="title_id" class="form-control @error('title_id') is-invalid @enderror" name="title_id">
-                <option value="1">Encik</option>
-                <option value="2">Cik</option>
+                @foreach ($senaraiTitle as $title)
+                <option value="{{ $title->id }}">{{ $title->name }}</option>
+                @endforeach
             </select>
 
             @error('title_id')

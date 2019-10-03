@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use DB;
+use App\User;
+use App\Race;
+use App\Religion;
+use App\Title;
 
 class UserController extends Controller
 {
@@ -42,15 +46,19 @@ class UserController extends Controller
 
     public function add()
     {
-        $senaraiRace = DB::table('race')
-        ->select([
+        $senaraiRace = Race::select([
             'id',
             'name'
         ])
         ->get();
 
-        $senaraiReligion = DB::table('religions')
-        ->select([
+        $senaraiReligion = Religion::select([
+            'id',
+            'name'
+        ])
+        ->get();
+
+        $senaraiTitle = Title::select([
             'id',
             'name'
         ])
@@ -59,7 +67,8 @@ class UserController extends Controller
         return view('theme_user.template_add', 
         compact(
             'senaraiRace', 
-            'senaraiReligion'
+            'senaraiReligion', 
+            'senaraiTitle'
         ));
     }
 
@@ -115,15 +124,19 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        $senaraiRace = DB::table('race')
-        ->select([
+        $senaraiRace = Race::select([
             'id',
             'name'
         ])
         ->get();
 
-        $senaraiReligion = DB::table('religions')
-        ->select([
+        $senaraiReligion = Religion::select([
+            'id',
+            'name'
+        ])
+        ->get();
+
+        $senaraiTitle = Title::select([
             'id',
             'name'
         ])
@@ -137,7 +150,8 @@ class UserController extends Controller
         compact(
             'user',
             'senaraiRace', 
-            'senaraiReligion'
+            'senaraiReligion', 
+            'senaraiTitle'
         ));
 
     }

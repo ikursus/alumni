@@ -36,3 +36,4 @@ Route::get('/dashboard', function(){
  //->only(['index', 'create', 'store']);
  //->except(['index', 'create', 'store']);
  Route::resource('races', 'RaceController');
+ Route::resource('titles', 'TitleController');

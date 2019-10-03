@@ -20,7 +20,7 @@ Route::get('/dashboard', function(){
  * Halaman pengurusan user
  */
 
- Route::group(['prefix' => 'users'], function () {
+ Route::group(['prefix' => 'users', 'middleware' => 'auth'], function () {
 
     Route::get('/', 'UserController@index')->name('users.index');
     Route::get('/add', 'UserController@add')->name('users.add');

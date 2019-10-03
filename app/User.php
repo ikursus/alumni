@@ -50,4 +50,10 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Relation diantara users dan table academics
+    public function academics()
+    {
+        return $this->hasMany(Academik::class, 'user_id', 'userId');
+    }
 }

@@ -12,6 +12,11 @@ use App\Title;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index() 
     {
         // $senaraiUsers = [
@@ -105,7 +110,10 @@ class UserController extends Controller
 
 
         // Berhubung dengan DB dan masukkan data
-        DB::table('users')->insert($data);
+        // DB::table('users')->insert($data);
+        $user = User::create($data);
+        $user->academics()->create($data_academic);
+        $user->pekerjaan()->create($data_pekerjaan);
 
         // Redirect ke senarai user
         return redirect('/users');

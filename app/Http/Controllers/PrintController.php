@@ -8,7 +8,7 @@ use PDF;
 
 class PrintController extends Controller
 {
-    public function user($id)
+    public function user(Request $request, $id)
     {
         // Dapatkan profile user
         $user = User::findOrFail($id);

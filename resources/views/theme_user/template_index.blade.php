@@ -6,7 +6,7 @@
 <div class="col-md-12">        
 
 <p>
-<a href="/users/add" class="btn btn-primary">Tambah User</a>
+<a href="{{ route('users.add') }}" class="btn btn-primary">Tambah User</a>
 </p>
 
 
@@ -38,8 +38,8 @@
             <td>{{ $user->race_name }}</td>
             <td>{{ $user->religion_name }}</td>
             <td>
-            <a href="/users/{{ $user->id }}" class="btn btn-primary btn-sm">VIEW</a>
-            <a href="/users/{{ $user->id }}/edit" class="btn btn-warning btn-sm">EDIT</a>
+            <a href="{{ route('users.profile', $user->id) }}" class="btn btn-primary btn-sm">VIEW</a>
+            <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning btn-sm">EDIT</a>
             
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete-{{ $user->id }}">

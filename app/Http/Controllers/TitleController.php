@@ -4,19 +4,30 @@ namespace App\Http\Controllers;
 
 use App\Title;
 use Illuminate\Http\Request;
+use DataTables;
 
 class TitleController extends Controller
 {
-        /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $senaraiTitles = Title::all();
+        return view('theme_titles.index');
+    }
 
-        return view('theme_titles.index', compact('senaraiTitles'));
+    // Datatables
+    public function datatables()
+    {
+        $query = Title::select([
+            'id',
+            'name'
+        ]);
+
+        return DataTables::of($query)
+        ->make(true);
     }
 
     /**

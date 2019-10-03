@@ -22,13 +22,13 @@ Route::get('/dashboard', function(){
 
  Route::group(['prefix' => 'users'], function () {
 
-    Route::get('/', 'UserController@index');
-    Route::get('/add', 'UserController@add');
-    Route::post('/add', 'UserController@save');
-    Route::get('/{id}', 'UserController@profile');
-    Route::get('/{id}/edit', 'UserController@edit')->where(['id' => '[0-9]+']);
-    Route::patch('/{id}/edit', 'UserController@update');
-    Route::delete('/{id}', 'UserController@destroy');
+    Route::get('/', 'UserController@index')->name('users.index');
+    Route::get('/add', 'UserController@add')->name('users.add');
+    Route::post('/add', 'UserController@save')->name('users.save');
+    Route::get('/{id}', 'UserController@profile')->name('users.profile');
+    Route::get('/{id}/edit', 'UserController@edit')->where(['id' => '[0-9]+'])->name('users.edit');
+    Route::patch('/{id}/edit', 'UserController@update')->name('users.update');
+    Route::delete('/{id}', 'UserController@destroy')->name('users.destroy');
 
  });
 
@@ -36,4 +36,6 @@ Route::get('/dashboard', function(){
  //->only(['index', 'create', 'store']);
  //->except(['index', 'create', 'store']);
  Route::resource('races', 'RaceController');
+ // Route titles untuk terima ajax request dari page themes_title/index.blade.php
+ Route::get('titles/datatables', 'TitleController@datatables')->name('titles.datatables');
  Route::resource('titles', 'TitleController');
